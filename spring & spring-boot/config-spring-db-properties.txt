@@ -1,0 +1,47 @@
+spring.jpa.show-sql
+  oolean
+  true/false
+  Default - false
+  Determines whether to log SQL queries in console or not. Logs the queries if set to true. 
+
+spring.jpa.open-in-view
+  boolean
+  true/false
+  Default - true
+  Creates session for each request and keeps the session active till request is fulfilled/processed. If this option is enabled, any update in entity could be saved without even using @Transactional. This might cause some unexpected issues which are difficult to be traced. It's always better to keep it false and handle the transaction manually.
+  Reference - https://medium.com/@rafaelralf90/open-session-in-view-is-evil-fd9a21645f8e
+
+spring.data.jpa.repositories.bootstrap-mode
+  string/enum
+  default, lazy, deferred
+  default -> Registers and initializes repositories eagerly
+  lazy -> Registers repositories eagerly but does not initialize them. Initialization happens at first use(after application started)
+  deferred -> ***???***
+  Reference - https://www.baeldung.com/jpa-bootstrap-mode
+
+spring.datasource.hikari.auto-commit
+  boolean
+  true/false
+  Default - true
+  If enabled, without the need of @Transaction or manual commit, spring commits each and every transaction/update happens to an entity object. This makes developer life easy to not bother about commit but will be problematic if we have more than one dependent DB calls. It's always better to keep it false and handle the transaction manually.
+  Resource - https://www.baeldung.com/java-jdbc-auto-commit
+
+spring.jpa.hibernate.ddl-auto
+  string/enum
+  create, create-drop, update, validate, none
+  Default - If no schema manager provided -> create-drop ***???*** , else noneg
+  create -> Hibernate drops existing tables and creates new tables
+  create-drop -> Creates tables and drops them when processing is completed. Used in test cases
+  update -> Updates existing tables but does not delete the existing tables or columns
+  validate -> Just validates if all tables exist or not
+  none -> Does nothing
+
+spring.jpa.properties.hibernate.generate_statistics
+  boolean
+  true/false
+  Default - false
+  Collects statistics for each entity manager and also adds loggers for each SQL execution. Could be time and resource consuming hence advised to turn it off in PROD.
+
+
+
+  
