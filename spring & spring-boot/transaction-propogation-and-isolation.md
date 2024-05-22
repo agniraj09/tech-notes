@@ -30,12 +30,15 @@ Transaction isolation refers to the degree to which one transaction is isolated 
 Types
 ---
 1. READ_UNCOMMITTED
-> This is the lowest level of isolation. This means, uncommitted changes of a transaction are visible to other transactions. This results is dirt reads and hence not recommended. Not supported in Postgres, Oracle.
+> This is the lowest level of isolation. This means, uncommitted changes of a transaction are visible to other transactions. This results is dirt reads and hence not recommended.\
+> **Not supported in Postgres, Oracle.**
 2. READ_COMMITTED
-> This is the next level of isolation. Only committed changes are visible to concurrent transactions. This avoid dirty read but still does not overcome phantom and non-repeatable read.
-> This is the default isolation level in Postgres
+> This is the next level of isolation. Only committed changes are visible to concurrent transactions. This avoid dirty read but still does not overcome phantom and non-repeatable read.\
+> **Default isolation level in Postgres, SQL and Oracle**
 3. REPETABLE_READ
-> It prevents non-repeatable reads. How is it done is, it basically puts a lock on all rows or data read by the transaction and does not allow other transactions to modify it. But still it does not overcome phantom reads.
+> It prevents non-repeatable reads. How is it done is, it basically puts a lock on all rows or data read by the transaction and does not allow other transactions to modify it. But still it does not overcome phantom reads.\
+> **Default isolation level in MySQL**\
+> **Not supported in Oracle.**
 4. SERIALIZABLE
 > This is the highest level of isolation. Basically it executes all operations in a serial manner and hence no concurrent changes are made. This might result in bad performance.
 5. DEFAULT
