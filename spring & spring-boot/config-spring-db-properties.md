@@ -16,7 +16,7 @@ spring.jpa.open-in-view
 ---
 Type : boolean\
 Values : true/false\
-Default : true
+Default : true 
 > Creates session for each request and keeps the session active till request is fulfilled/processed. If this option is enabled, any update in entity could be saved without even using @Transactional. This might cause some unexpected issues which are difficult to be traced. It's always better to keep it false and handle the transaction manually.\
 > https://medium.com/@rafaelralf90/open-session-in-view-is-evil-fd9a21645f8e
 
